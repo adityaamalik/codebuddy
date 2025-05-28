@@ -1,7 +1,19 @@
-import Image from "next/image";
+import { SignInButton } from "@clerk/nextjs";
+import { SignUpButton } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
+import { SignedIn } from "@clerk/nextjs";
+import { SignedOut } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-    <div><h1>Helloworld</h1></div>
+    <div className="m-10">
+      <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+    </div>
   );
 }
