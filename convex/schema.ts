@@ -9,4 +9,22 @@ export default defineSchema({
    role: v.union(v.literal("candidate"), v.literal("interviewer")),
    clerkId: v.string(),
   }).index("byClerkId", ["clerkId"]),
+
+  interviews: defineTable({
+    title: v.string(),
+    description: v.string(),
+    startTime: v.number(),
+    endTime: v.optional(v.number()),
+    status: v.string(),
+    streamCallId: v.string(),
+    candidateId: v.id("users"),
+    interviewerId: v.array(v.string()),
+  }).index("by_candidate_id", ["candidateId"]).index("by_stream_call_id", ["streamCallId"]),
+
+  comments: defineTable({
+    content: v.string(),
+    rating: v.number(),
+    interviewerId: v.string(),
+    interviewId: v.id("interviews"),
+  }).index("by_interview_id", ["interviewId"]),
 });
