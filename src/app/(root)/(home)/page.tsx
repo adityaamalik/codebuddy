@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
 import MeetingModal from "@/components/MeetingModal";
+import LoaderUI from "@/components/LoaderUI";
 
 export default function Home() {
 
@@ -33,7 +34,7 @@ export default function Home() {
       }
     };
   
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <LoaderUI />
 
   return (
     <div className="container max-w-7xl mx-auto p-6">
